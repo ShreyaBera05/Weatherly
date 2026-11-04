@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101827">
+    <title>Weatherly | Weather Forecast</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="clear">
+    <main class="app">
+
+        <header class="topbar">
+            <a href="#" class="logo">☀ Weatherly<span>.</span></a>
+            <span class="live-status"><i></i> LIVE WEATHER</span>
+        </header>
+
+        <section class="search-section">
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="text" id="cityInput"
+                    placeholder="Search for a city..."
+                    autocomplete="off">
+                <button id="searchBtn">Search</button>
+            </div>
+            <button class="location-btn" id="locationBtn">
+                ◎ Use My Location
+            </button>
+            <div id="suggestions" class="suggestions"></div>
+        </section>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Fetching weather information...</p>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <section id="weatherContent" class="hidden">
+
+            <section class="hero-card">
+                <div class="hero-top">
+                    <div>
+                        <p class="eyebrow">CURRENT WEATHER</p>
+                        <h1 id="cityName">Kolkata</h1>
+                        <p id="dateTime" class="muted"></p>
+                    </div>
+                    <div class="weather-icon" id="weatherIcon">☀️</div>
+                </div>
+
+                <div class="temperature-area">
+                    <h2 id="temperature">--°</h2>
+                    <div>
+                        <h3 id="condition">Clear Sky</h3>
+                        <p class="muted">Feels like <span id="feelsLike">--°</span></p>
+                    </div>
+                </div>
+
+                <div class="high-low">
+                    <span>↑ <span id="highTemp">--°</span></span>
+                    <span>↓ <span id="lowTemp">--°</span></span>
+                </div>
+            </section>
+
+            <section class="details-grid">
+                <div class="detail-card">
+                    <span class="detail-icon">💧</span>
+                    <p>Humidity</p>
+                    <h3 id="humidity">--%</h3>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">💨</span>
+                    <p>Wind Speed</p>
+                    <h3 id="windSpeed">-- km/h</h3>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🌡️</span>
+                    <p>Pressure</p>
+                    <h3 id="pressure">-- hPa</h3>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">☀️</span>
+                    <p>UV Index</p>
+                    <h3 id="uvIndex">--</h3>
+                </div>
+            </section>
+
+            <section class="forecast-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">UPCOMING HOURS</p>
+                        <h2>Hourly Forecast</h2>
+                    </div>
+                </div>
+                <div id="hourlyForecast" class="hourly-list"></div>
+            </section>
+
+            
+<!-- Sunrise and Sunset Section -->
+<section class="forecast-section sun-section">
+
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">DAYLIGHT TRACKER</p>
+            <h2>Sunrise & Sunset</h2>
+        </div>
+        <span class="sun-badge">☀ Solar</span>
+    </div>
+
+    <div class="sun-visual">
+        <div class="sun-arc">
+            <div class="arc-line"></div>
+            <div class="sun-progress" id="sunProgress">
+                <span class="sun-ball">☀</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sun-times">
+        <div class="sun-time-item">
+            <span class="sun-icon">🌅</span>
+            <p>Sunrise</p>
+            <h3 id="sunriseTime">--:--</h3>
+        </div>
+
+        <div class="daylight-info">
+            <p>DAYLIGHT</p>
+            <h3 id="daylightDuration">--h --m</h3>
+        </div>
+
+        <div class="sun-time-item">
+            <span class="sun-icon">🌇</span>
+            <p>Sunset</p>
+            <h3 id="sunsetTime">--:--</h3>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+            <section class="forecast-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">NEXT 5 DAYS</p>
+                        <h2>5-Day Forecast</h2>
+                    </div>
+                </div>
+                <div id="dailyForecast" class="daily-list"></div>
+            </section>
+            
+
+            <section class="forecast-section chart-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">TEMPERATURE TRENDS</p>
+                        <h2>Temperature Overview</h2>
+                    </div>
+                    <span class="chart-label">Next 12 Hours</span>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+            </section>
+
+
+
+        </section>
+
+        <footer>
+            <p>Weatherly © 2026 | Powered by Open-Meteo API</p>
+            <p>Weather information is provided for general guidance.</p>
+        </footer>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
